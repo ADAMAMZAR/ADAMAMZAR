@@ -42,6 +42,18 @@
 * **AI & Data:** Gemini, RAG architectures, Vector Databases (MongoDB Atlas)
 * **Automation & Ops:** n8n, Firebase
 
+### 🧠 LeetCode Statistics
+<div align="center">
+  <a href="https://leetcode.com/adamamzar">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://leetcard.jacoblin.cool/adamamzar?theme=dark&ext=activity">
+      <source media="(prefers-color-scheme: light)" srcset="https://leetcard.jacoblin.cool/adamamzar?theme=light&ext=activity">
+      <!-- Fallback image for older browsers -->
+      <img src="https://leetcard.jacoblin.cool/adamamzar?theme=dark&ext=activity" alt="LeetCode Stats" width="100%" />
+    </picture>
+  </a>
+</div>
+
 ### 📊 GitHub Analytics
 <p align="center">
   <img src="https://github-stats-extended.vercel.app/api?username=adamamzar&show_icons=true&locale=en&theme=radical" alt="adamamzar stats" width="48%" height="200" />
