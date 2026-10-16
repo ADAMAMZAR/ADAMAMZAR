@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/profile-banner.png" alt="Human and AI hands reaching across a terminal" width="100%" />
+  <img src="./assets/hiromi-higuruma-profile-banner.png" alt="Hiromi Higuruma profile banner" width="100%" />
 </p>
 
 <h1 align="center">Hi 👋, I'm Adam</h1>
@@ -71,9 +71,8 @@
 
 ## 📈 Activity Graph
 
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ADAMAMZAR&theme=github-compact&hide_border=true&area=true" alt="Adam's GitHub contribution activity graph" width="100%" />
-</p>
+<!-- BEGIN ACTIVITY-GRAPH -->
+<!-- END ACTIVITY-GRAPH -->
 
 ---
 
