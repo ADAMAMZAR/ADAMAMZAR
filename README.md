@@ -5,7 +5,7 @@
 <h1 align="center">Hi 👋, I'm Adam</h1>
 
 <p align="center">
-  <strong>Full-Stack AI Engineer · Computer Science Undergraduate</strong>
+  <strong>AI Engineer · Computer Science Undergraduate</strong>
 </p>
 
 <p align="center">
