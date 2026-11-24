@@ -42,7 +42,7 @@
 ---
 
 <p align="center">
-  <img src="./assets/hiromi-higuruma-profile-banner.png" alt="Hiromi Higuruma profile banner" width="100%" />
+  <img src="./assets/hiromi.png" alt="Hiromi Higuruma profile banner" width="100%" />
 </p>
 
 ---
@@ -69,6 +69,14 @@
     <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=ADAMAMZAR&hide_border=true&theme=default" />
     <img src="https://streak-stats.demolab.com?user=ADAMAMZAR&hide_border=true&theme=github-dark-blue" alt="Adam's GitHub contribution streak" width="67%" />
   </picture>
+</p>
+
+---
+
+## Recent Commits
+
+<p align="center">
+  <img src="./assets/room.svg" alt="Pixel-art desk whose monitor streams Adam's latest commits" width="100%" />
 </p>
 
 ---
