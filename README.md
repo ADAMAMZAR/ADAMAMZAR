@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="./assets/hero.svg" alt="Adam Amzar: AI Engineer and Computer Science Undergraduate" width="100%" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/hero.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.svg" />
+    <img src="./assets/hero.svg" alt="Adam Amzar: AI Engineer and Computer Science Undergraduate" width="100%" />
+  </picture>
 </p>
 
 <p align="center">
@@ -45,13 +49,26 @@
 
 ## GitHub Analytics
 
+<!-- Widths follow each card's aspect ratio (450x195 and 300x165) so both render at the same height. -->
 <p align="center">
-  <img src="https://github-stats-extended.vercel.app/api?username=ADAMAMZAR&hide_border=true&theme=github_dark" alt="Adam's GitHub statistics" height="180" />
-  <img src="https://github-stats-extended.vercel.app/api/top-langs?username=ADAMAMZAR&layout=compact&hide_border=true&theme=github_dark" alt="Adam's most used languages" height="180" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api?username=ADAMAMZAR&hide_border=true&theme=github_dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-stats-extended.vercel.app/api?username=ADAMAMZAR&hide_border=true&theme=default" />
+    <img src="https://github-stats-extended.vercel.app/api?username=ADAMAMZAR&hide_border=true&theme=github_dark" alt="Adam's GitHub statistics" width="55%" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/top-langs?username=ADAMAMZAR&layout=compact&hide_border=true&theme=github_dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-stats-extended.vercel.app/api/top-langs?username=ADAMAMZAR&layout=compact&hide_border=true&theme=default" />
+    <img src="https://github-stats-extended.vercel.app/api/top-langs?username=ADAMAMZAR&layout=compact&hide_border=true&theme=github_dark" alt="Adam's most used languages" width="43.3%" />
+  </picture>
 </p>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=ADAMAMZAR&theme=github-dark-blue&hide_border=true" alt="Adam's GitHub contribution streak" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=ADAMAMZAR&hide_border=true&theme=github-dark-blue" />
+    <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=ADAMAMZAR&hide_border=true&theme=default" />
+    <img src="https://streak-stats.demolab.com?user=ADAMAMZAR&hide_border=true&theme=github-dark-blue" alt="Adam's GitHub contribution streak" width="60%" />
+  </picture>
 </p>
 
 ---
