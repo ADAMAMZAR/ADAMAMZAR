@@ -19,7 +19,7 @@
 </defs>
 <rect width="1200" height="520" rx="18" fill="#0a0f1a"/>
 <rect width="1200" height="520" rx="18" fill="url(#grid)"/>
-<text x="40" y="52" fill="#5b6b8c" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" letter-spacing="4">ADAMAMZAR / LIVING IDENTITY</text>
+<text x="40" y="52" fill="#5b6b8c" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" letter-spacing="4">ADAMAMZAR</text>
 <text x="1160" y="52" fill="#5b6b8c" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" text-anchor="end">@adamamzar</text>
 
 <text x="40" y="150" fill="#3b82c4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" letter-spacing="6">HELLO, WORLD. I'M</text>
