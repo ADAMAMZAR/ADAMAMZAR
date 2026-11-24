@@ -12,7 +12,7 @@ from collections import defaultdict
 from pathlib import Path
 from xml.sax.saxutils import escape
 
-from PIL import Image, ImageEnhance
+from PIL import Image, ImageEnhance, ImageOps
 
 USERNAME = "ADAMAMZAR"
 FIRST, LAST = "Adam", "Amzar"
@@ -24,28 +24,34 @@ THEMES = {
     "dark": dict(
         bg="#0a0f1a", grid="#121a2b", ink="#c9d1e3", stroke="#e5e9f2", muted="#5b6b8c",
         accent="#3b82c4", role="#f1f5f9", tagline="#7d8fb3", cursor="#7dd3fc",
-        ring="#1e2740", tick="#7c83c9", edge="#2a3552", scan="#7dd3fc", mix=255,
+        ring="#1e2740", tick="#7c83c9", edge="#2a3552", scan="#e5e7eb", mix=255, photo=0.4, chars=0.95, invert=False,
     ),
     "light": dict(
         bg="#f6f8fb", grid="#e4e9f1", ink="#1f2937", stroke="#111827", muted="#6b7a99",
         accent="#2563eb", role="#0f172a", tagline="#55657f", cursor="#0284c7",
-        ring="#d5dbe8", tick="#6366f1", edge="#c7d0e0", scan="#38bdf8", mix=0,
+        ring="#d5dbe8", tick="#6366f1", edge="#c7d0e0", scan="#6b7280", mix=0, photo=0.3, chars=1, invert=True,
     ),
 }
 
 W, H = 1200, 520
 CX, CY, R = 880, 260, 205  # avatar circle
-COLS = 64  # ASCII grid columns across the circle diameter
+COLS = 80  # ASCII grid columns across the circle diameter
+CROP = (0.15, 0.17, 0.85, 0.87)  # zoom on the face (left, top, right, bottom as fractions of the avatar)
 RAMP = " .:-=+*#%@"
 FONT = "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace"
 
 
 def load_avatar() -> Image.Image:
+    """Avatar cropped to the face, in high-contrast grayscale."""
     if len(sys.argv) > 1:
-        return Image.open(sys.argv[1]).convert("RGB")
-    url = f"https://github.com/{USERNAME}.png?size=460"
-    with urllib.request.urlopen(url) as resp:
-        return Image.open(io.BytesIO(resp.read())).convert("RGB")
+        img = Image.open(sys.argv[1])
+    else:
+        url = f"https://github.com/{USERNAME}.png?size=460"
+        with urllib.request.urlopen(url) as resp:
+            img = Image.open(io.BytesIO(resp.read()))
+    w, h = img.size
+    img = img.convert("L").crop((int(CROP[0] * w), int(CROP[1] * h), int(CROP[2] * w), int(CROP[3] * h)))
+    return ImageOps.autocontrast(img, cutoff=1).convert("RGB")
 
 
 def ascii_overlay(img: Image.Image, t: dict) -> str:
@@ -66,6 +72,8 @@ def ascii_overlay(img: Image.Image, t: dict) -> str:
             if (x - CX) ** 2 + (y - CY) ** 2 > (R - 6) ** 2:
                 continue
             lum = gray.getpixel((c, r)) / 255
+            if t["invert"]:  # on a light background, dark areas get the dense characters
+                lum = 1 - lum
             ch = RAMP[min(len(RAMP) - 1, int(lum * len(RAMP)))]
             if ch == " ":
                 continue
@@ -80,7 +88,7 @@ def ascii_overlay(img: Image.Image, t: dict) -> str:
         xs = " ".join(f"{x:.1f}" for x, _ in cells)
         text = escape("".join(ch for _, ch in cells))
         out.append(f'<text x="{xs}" y="{y:.1f}" fill="rgb({rr},{gg},{bb})">{text}</text>')
-    return f'<g font-family="{FONT}" font-size="{cell * 1.15:.1f}" font-weight="700" opacity="0.55">' + "".join(out) + "</g>"
+    return f'<g font-family="{FONT}" font-size="{cell * 1.15:.1f}" font-weight="700" opacity="{t['chars']}">' + "".join(out) + "</g>"
 
 
 def photo_data(img: Image.Image) -> str:
@@ -140,7 +148,7 @@ def build(img: Image.Image, t: dict) -> str:
 <circle cx="{CX}" cy="{CY}" r="{R + 40}" fill="none" stroke="{t['ring']}" stroke-width="1"/>
 <g>{ticks(t)}<animateTransform attributeName="transform" type="rotate" from="0 {CX} {CY}" to="360 {CX} {CY}" dur="40s" repeatCount="indefinite"/></g>
 <g clip-path="url(#disc)">
-  <image x="{CX - R}" y="{CY - R}" width="{2 * R}" height="{2 * R}" opacity="0.9" xlink:href="data:image/jpeg;base64,{photo}"/>
+  <image x="{CX - R}" y="{CY - R}" width="{2 * R}" height="{2 * R}" opacity="{t['photo']}" xlink:href="data:image/jpeg;base64,{photo}"/>
   <rect x="{CX - R}" y="{CY - R}" width="{2 * R}" height="{2 * R}" fill="{t['bg']}" opacity="0.25"/>
   {overlay}
   <circle cx="{CX}" cy="{CY}" r="{R}" fill="url(#vignette)"/>

@@ -49,17 +49,17 @@
 
 ## GitHub Analytics
 
-<!-- Widths follow each card's aspect ratio (450x195 and 300x165) so both render at the same height. -->
+<!-- Widths follow each card's aspect ratio (360x195 and 360x190) so both render at the same height. -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api?username=ADAMAMZAR&hide_border=true&theme=github_dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github-stats-extended.vercel.app/api?username=ADAMAMZAR&hide_border=true&theme=default" />
-    <img src="https://github-stats-extended.vercel.app/api?username=ADAMAMZAR&hide_border=true&theme=github_dark" alt="Adam's GitHub statistics" width="55%" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api?username=ADAMAMZAR&hide_border=true&hide_rank=true&card_width=360&theme=github_dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-stats-extended.vercel.app/api?username=ADAMAMZAR&hide_border=true&hide_rank=true&card_width=360&theme=default" />
+    <img src="https://github-stats-extended.vercel.app/api?username=ADAMAMZAR&hide_border=true&hide_rank=true&card_width=360&theme=github_dark" alt="Adam's GitHub statistics" width="48.5%" />
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/top-langs?username=ADAMAMZAR&layout=compact&hide_border=true&theme=github_dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github-stats-extended.vercel.app/api/top-langs?username=ADAMAMZAR&layout=compact&hide_border=true&theme=default" />
-    <img src="https://github-stats-extended.vercel.app/api/top-langs?username=ADAMAMZAR&layout=compact&hide_border=true&theme=github_dark" alt="Adam's most used languages" width="43.3%" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/top-langs?username=ADAMAMZAR&layout=compact&hide_border=true&card_width=360&langs_count=8&theme=github_dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-stats-extended.vercel.app/api/top-langs?username=ADAMAMZAR&layout=compact&hide_border=true&card_width=360&langs_count=8&theme=default" />
+    <img src="https://github-stats-extended.vercel.app/api/top-langs?username=ADAMAMZAR&layout=compact&hide_border=true&card_width=360&langs_count=8&theme=github_dark" alt="Adam's most used languages" width="49.8%" />
   </picture>
 </p>
 
@@ -67,7 +67,7 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=ADAMAMZAR&hide_border=true&theme=github-dark-blue" />
     <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=ADAMAMZAR&hide_border=true&theme=default" />
-    <img src="https://streak-stats.demolab.com?user=ADAMAMZAR&hide_border=true&theme=github-dark-blue" alt="Adam's GitHub contribution streak" width="60%" />
+    <img src="https://streak-stats.demolab.com?user=ADAMAMZAR&hide_border=true&theme=github-dark-blue" alt="Adam's GitHub contribution streak" width="67%" />
   </picture>
 </p>
 
