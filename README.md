@@ -2,7 +2,9 @@
   <img src="./assets/hiromi-higuruma-profile-banner.png" alt="Hiromi Higuruma profile banner" width="100%" />
 </p>
 
-<h1 align="center">Hi 👋, I'm Adam</h1>
+<p align="center">
+  <img src="./assets/hero.svg" alt="Adam Amzar: AI Engineer and Computer Science Undergraduate" width="100%" />
+</p>
 
 <p align="center">
   <strong>AI Engineer · Computer Science Undergraduate</strong>
@@ -66,17 +68,6 @@
 <p align="center">
   <img src="https://streak-stats.demolab.com?user=ADAMAMZAR&theme=github-dark-blue&hide_border=true" alt="Adam's GitHub contribution streak" />
 </p>
-
----
-
-## 📈 Activity Graph
-
-<!-- BEGIN ACTIVITY-GRAPH -->
-<picture>
-  <source media="(max-width: 767px)" srcset="activity-graph-mobile.svg">
-  <img src="activity-graph.svg" alt="Activity Graph" width="100%">
-</picture>
-<!-- END ACTIVITY-GRAPH -->
 
 ---
 
