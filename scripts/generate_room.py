@@ -25,9 +25,8 @@ FONT = "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monosp
 SX, SY, SW, SH = 392, 150, 416, 248
 BAR = 22
 LH, FS, MAX_CHARS = 18, 12.5, 54
-START = 7  # lines already on screen when the image loads
+START = 7  # where in the log the stream starts (the screen is full from the first frame)
 STEP = 0.9  # seconds between new lines
-HOLD = 6  # seconds the full screen stays before the loop restarts
 
 
 def fetch_commits() -> list[dict]:
@@ -75,19 +74,19 @@ def terminal(commits: list[dict]) -> str:
             f'<tspan fill="#e3b341">{c["sha"]}</tspan> <tspan fill="#79c0ff">{escape(repo)}:</tspan> '
             f'<tspan fill="#a5d6a7">{escape(msg)}</tspan>'
         )
-    lines.append('<tspan fill="#7ee787">$</tspan> <tspan fill="#e6edf3">█<animate attributeName="opacity" '
-                 'values="1;1;0;0" keyTimes="0;0.5;0.5;1" dur="1s" repeatCount="indefinite"/></tspan>')
-
+    # Seamless loop: the log is laid out as an endless tape (row i shows lines[i % n]), so after one full
+    # cycle of n steps the screen looks exactly like it did at the start and the restart is invisible.
+    n = len(lines)
     bottom = SY + SH - 14  # baseline of the last visible row
-    texts = "".join(f'<text x="{SX + 12}" y="{bottom + i * LH}">{line}</text>' for i, line in enumerate(lines))
+    visible = (SH - BAR) // LH + 1
+    texts = "".join(f'<text x="{SX + 12}" y="{bottom + i * LH}">{lines[i % n]}</text>'
+                    for i in range(START - visible, START + n + 1))
 
-    # scroll one line at a time, starting with START lines already visible
-    steps = list(range(min(START, len(lines) - 1), len(lines)))
-    total = len(steps) * STEP + HOLD
-    key_times = ";".join(f"{i * STEP / total:.4f}" for i in range(len(steps)))
+    steps = list(range(START, START + n))
+    key_times = ";".join(f"{i / n:.4f}" for i in range(n))
     values = ";".join(f"0 {-k * LH}" for k in steps)
     scroll = (f'<animateTransform attributeName="transform" type="translate" calcMode="discrete" '
-              f'values="{values}" keyTimes="{key_times}" dur="{total:.1f}s" repeatCount="indefinite"/>')
+              f'values="{values}" keyTimes="{key_times}" dur="{n * STEP:.1f}s" repeatCount="indefinite"/>')
     title = (rect(SX, SY, SW, BAR, "#1b2130") +
              "".join(f'<circle cx="{SX + 14 + i * 14}" cy="{SY + BAR // 2}" r="4" fill="{c}"/>'
                      for i, c in enumerate(("#ff5f57", "#febc2e", "#28c840"))) +
@@ -243,7 +242,7 @@ def fan(cx, cy, r, dur) -> str:
 
 
 def gpu_with_bubble() -> str:
-    """A graphics card on the floor asking for a very specific upgrade."""
+    """A graphics card on the floor, insisting on what it is not for."""
     x, y = 212, 470  # card lies on the floor, fans facing us
     card = [rect(x, y, 84, 30, "#1c1f2b"), rect(x + 2, y + 2, 80, 26, "#2a2f3f"), rect(x - 6, y - 2, 6, 32, "#8a93a6"),
             rect(x + 4, y + 4, 76, 2, "#7c5cff", ' opacity="0.8"')]
@@ -256,7 +255,7 @@ def gpu_with_bubble() -> str:
               f'stroke="#2b2118" stroke-width="2" stroke-linejoin="round"/>'
               f'<rect x="{bx + 33}" y="{by + bh - 3}" width="18" height="5" fill="#f3e9d2"/>'
               f'<text x="{bx + bw / 2}" y="{by + 18}" text-anchor="middle" font-family="{FONT}" font-size="12" '
-              f'font-weight="700" fill="#2b2118">Needed:</text>'
+              f'font-weight="700" fill="#2b2118">Not for</text>'
               f'<text x="{bx + bw / 2}" y="{by + 34}" text-anchor="middle" font-family="{FONT}" font-size="12" '
               f'font-weight="700" fill="#c0392b">Chinese Honeypot</text></g></g>')
     return "".join(card) + bubble
